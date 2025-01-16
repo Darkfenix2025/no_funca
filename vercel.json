@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/chat.js",
+            "use": "@vercel/node",
+            "config": { "includeFiles": ["legalito.db"] }
+        },
+        {
+            "src": "api/contact.js",
+            "use": "@vercel/node",
+            "config": { "includeFiles": ["legalito.db"] }
+        }
+    ],
+    "routes": [
+        { "src": "/api/chat", "dest": "api/chat.js" },
+        { "src": "/api/contact", "dest": "api/contact.js" }
+    ]
+}

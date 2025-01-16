@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legalito: Chat Legal</title>
+     <meta name="description" content="Legalito: Abogados digitales accesibles. Prevención legal, educación, juicios, laboral, accidentes, defensa del consumidor, contratos, sucesiones, previsional y más.">
+    <meta name="keywords" content="abogados, jurídico, legal, tecnología, digital, prevención legal, educación legal, juicio, laboral, accidente, consumidor, contrato, sucesión, previsional, Legalito">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="chatbot" class="chatbot">
+        <div class="container">
+            <div class="lito-box">
+                <img src="img/imagen_chatbot.jpg" alt="LITØ" class="logo">
+            </div>
+            <h2>Chat Legal con Legalito</h2>
+            <div class="chat-container">
+                <div id="chat-log">
+                    <p class="chatbot-message">¡Hola! Soy tu asistente legal virtual de Legalito. ¿En qué puedo ayudarte hoy?</p>
+                </div>
+                <button id="close-chatbot-button" class="btn close-chatbot-btn" style="display: none">Cerrar Chat</button>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Escribe tu consulta aquí...">
+                    <button id="send-button" class="btn">Enviar</button>
+                </div>
+                <div class="disclaimer">
+                    <p class="disclaimer">
+                        <strong>Importante:</strong> Las respuestas proporcionadas por el chatbot de Legalito son de carácter informativo general y no constituyen asesoramiento legal formal. La información generada por el chatbot no reemplaza la consulta con un profesional del derecho. El uso de este chatbot y la interpretación de sus respuestas quedan bajo la exclusiva responsabilidad del consultante.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="chatbot.js"></script>
+</body>
+</html>
