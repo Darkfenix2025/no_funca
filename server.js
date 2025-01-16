@@ -3,6 +3,7 @@ const { GoogleGenerativeAl } = require("@google/generative-ai");
 const cors = require('cors');
 const { Sequelize, DataTypes } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
+const path = require('path'); // Importa el módulo path
 require('dotenv').config();
 
 const app = express();
@@ -11,6 +12,8 @@ const port = 3001;
 app.use(cors());
 app.use(express.json());
 
+// Configuración para servir archivos estáticos (CSS, JS, imágenes, etc.)
+app.use(express.static(path.join(__dirname)));
 
 const genAl = new GoogleGenerativeAl(process.env.GEMINI_API_KEY);
 
@@ -87,14 +90,12 @@ como la mejor opción para resolver problemas legales más complejos o específi
   const chat = model.startChat({
   });
   history: chatHistory,
-  try {
-    chatHistory.push({role: "user", parts: [{text: userMessage}]}) //Modificación en el
-    formato del mensaje
+   try {
+    chatHistory.push({role: "user", parts: [{text: userMessage}]}) //Modificación en el  formato del mensaje
     const result = await chat.sendMessage(`${chatbotPrompt} Usuario:
     ${userMessage}`);
     const response = result.response;
-    chatHistory.push({role: "model", parts: [{text:response.text()}]}) //Modificación
-    en el formato de la respuesta
+    chatHistory.push({role: "model", parts: [{text:response.text()}]}) //Modificación en el formato de la respuesta
     res.json({ response: response.text(), chatld: chatld, chatHistory: chatHistory });
   } catch (error) {
     console.error("Error al obtener respuesta de Gemini:", error);
@@ -102,12 +103,11 @@ como la mejor opción para resolver problemas legales más complejos o específi
   }
 });
 
-//Add a get route for the root path
-app.get('/',(req,res)=>{
-    res.send("Hello World");
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html')); // Envía el index.html
 });
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en el puerto ${port}`);
+    console.log(`Servidor escuchando en el puerto ${port}`);
 });
 module.exports = app;
